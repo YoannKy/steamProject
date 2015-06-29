@@ -1,18 +1,24 @@
 /// <reference path="../typings/tsd.d.ts" />
 import {Component, View, bootstrap, NgFor} from 'angular2/angular2';
+import {RouteConfig, RouterOutlet, RouterLink, routerInjectables} from 'angular2/router';
 import {SteamService} from 'services/steamService';
+
+import {Comparison} from 'components/comparison/comparison';
+import {List} from 'components/list/list';
+import {Features} from 'components/features/features';
 
 @Component({
   selector: 'app',
   appInjector: [SteamService]
 })
+@RouteConfig([
+  { path: '/comparison', component: Comparison, as: 'comparison' },
+  { path: '/list', component: List, as: 'list' },
+  { path: '/features', component: Features, as: 'features' }
+])
 @View({
-  template: ` <input  class="form-control"  #name (keyup)="search(name.value)" type="text" placeholder="search a game..." />
-              <ul>
-                  <li (click)="details(result.appid)" *ng-for="#result of results">{{result.name}}</li>
-                </ul>
-              <button (click)="loadMore()">Load more</button>`,
-  directives: [NgFor]
+  templateUrl: 'app.html',
+  directives: [NgFor, RouterOutlet, RouterLink]
 })
 class App {
   steamService: SteamService;
@@ -45,4 +51,4 @@ class App {
   details()
 
 }
-bootstrap(App);
+bootstrap(App, [routerInjectables]);

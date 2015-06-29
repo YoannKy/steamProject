@@ -1,0 +1,16 @@
+<div class="wrapper">
+  <nav role="navigation" class="menu">
+    <li class="menu-item"><a router-link="list" class="menu-link">List</a></li>
+    <li class="menu-item"><a router-link="features" class="menu-link">Features</a></li>
+    <li class="menu-item"><a router-link="comparison" class="menu-link">Comparison</a></li>
+  </nav>
+
+  <input  class="form-control"  #name (keyup)="search(name.value)" type="text" placeholder="search a game..." />
+  <ul>
+    <li (click)="details(result.appid)" *ng-for="#result of results">{{result.name}}</li>
+  </ul>
+  <button (click)="loadMore()">Load more</button>
+
+</div>
+
+<router-outlet></router-outlet>
