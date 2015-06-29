@@ -1,4 +1,4 @@
-import {Component, View, bootstrap, NgFor} from 'angular2/angular2';
+import {Component, View, NgFor} from 'angular2/angular2';
 
 @Component({
   selector: 'details'
@@ -21,5 +21,3 @@ export class Details {
     ];
   }
 }
-
-bootstrap(Details);
