@@ -7,25 +7,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     }
 };
 var angular2_1 = require('angular2/angular2');
-var Details = (function () {
-    function Details() {
-        this.gameDetails = [
-            {
-                title: 'Counter-Strike: Global Offensive',
-                owners: 14469466,
-                playersForever: 13908311
-            }
-        ];
+var Home = (function () {
+    function Home() {
     }
-    Details = __decorate([
+    Home = __decorate([
         angular2_1.Component({
-            selector: 'details'
+            selector: 'homepage'
         }),
         angular2_1.View({
-            templateUrl: 'components/details/details.html',
-            directives: [angular2_1.NgFor]
+            templateUrl: 'components/home/home.html'
         })
-    ], Details);
-    return Details;
+    ], Home);
+    return Home;
 })();
-exports.Details = Details;
+exports.Home = Home;
