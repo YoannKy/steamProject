@@ -1,3 +1,19 @@
 <div class="wrapper">
   <h1>Game details</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Owners</th>
+        <th>Players forever</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ng-for="#detail of gameDetails">
+        <td>{{ detail.title }}</td>
+        <td>{{ detail.owners }}</td>
+        <td>{{ detail.playersForever }}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
