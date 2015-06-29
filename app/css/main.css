@@ -1,0 +1,12 @@
+.visible {
+	display: none;
+}
+
+.game-item {
+	cursor: pointer;
+}
+
+.game-list {
+	max-height: 400px;
+	overflow-y: auto;
+}

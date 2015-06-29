@@ -2,6 +2,10 @@ export class SteamService {
   regex : RegExp; 
   promise: Promise;
   games: Array<Object> = []; 
+  results: Array<Object> = []; 
+  indice : number;
+  renember : Array<Object> = [];
+  forbidden : RegExp = /beta|dlc|trailer|movie|teaser|demo|dedicated|test|sdk/i;
 
 
   constructor() {
@@ -14,31 +18,30 @@ export class SteamService {
         reject(); // reject promise if we catch a fetch error
       });
     });
+
     this.promise.then(response => {
-      this.results = response;
-    });  
+      this.results = response.slice();
+      this.renember = response.slice();
+     });  
+
   }
 
-  search(search: string, offset: number, limit: number) {
-    this.games = [];
+  search(search: string, offset : number, limit: number) {
+    this.indice = 0;
+    if (offset == 0) {
+      this.results = this.renember.slice();
+      this.games = [];
+    } 
     this.regex = new RegExp(search,"i");
-    if(offset == 0) {
-      for (var i = 0; i <= this.results.length - 1; i++) {
-        if (this.regex.test(this.results[i].name)) {
-          if (this.games.length <= limit) {
-            this.games.push(this.results[i]);
-          }
+    for (var i = offset; i <= this.results.length - 1; i++) {
+      if (this.regex.test(this.results[i].name) && !this.forbidden.test(this.results[i].name)) {
+        if(this.indice <= limit) {
+          this.games.push(this.results[i]);
+          this.results.splice(i, 1);
+          this.indice++;
         }
-      };
-    } else {
-      for (var i = offset; i <= this.results.length - 1; i++) {
-        if (this.regex.test(this.results[i].name)) {
-          if (this.games.length <= limit) {
-            this.games.push(this.results[i]);
-          }
-        }
-      };
-    }
+      }
+    };
     return this.games;
   }
 
