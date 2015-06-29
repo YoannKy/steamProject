@@ -22,13 +22,23 @@ export class SteamService {
   search(search: string, offset: number, limit: number) {
     this.games = [];
     this.regex = new RegExp(search,"i");
-    for (var i = 0; i <= this.results.length - 1; i++) {
-      if (this.regex.test(this.results[i].name)) {
-        if (this.games.length <= limit) {
-          this.games.push(this.results[i]);
+    if(offset == 0) {
+      for (var i = 0; i <= this.results.length - 1; i++) {
+        if (this.regex.test(this.results[i].name)) {
+          if (this.games.length <= limit) {
+            this.games.push(this.results[i]);
+          }
         }
-      }
-    };
+      };
+    } else {
+      for (var i = offset; i <= this.results.length - 1; i++) {
+        if (this.regex.test(this.results[i].name)) {
+          if (this.games.length <= limit) {
+            this.games.push(this.results[i]);
+          }
+        }
+      };
+    }
     return this.games;
   }
 
