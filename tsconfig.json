@@ -8,8 +8,7 @@
     "removeComments": true,
     "noLib": false,
     "emitDecoratorMetadata": true,
-    "sourceMap": true,
-    "listFiles": true
+    "sourceMap": true
   },
   "files": []
 }
