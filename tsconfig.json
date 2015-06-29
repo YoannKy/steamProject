@@ -15,9 +15,17 @@
         "!./node_modules/**/*.ts"
     ],
     "files": [
-        "./app.ts",
-        "./components/about/about.ts",
-        "./components/home/home.ts",
-        "./init.ts"
+        "./app/app.ts",
+        "./app/components/about/about.ts",
+        "./app/components/details/details.ts",
+        "./app/components/home/home.ts",
+        "./app/init.ts",
+        "./typings/angular2/angular2.d.ts",
+        "./typings/custom.router.d.ts",
+        "./typings/custom.system.d.ts",
+        "./typings/es6-promise/es6-promise.d.ts",
+        "./typings/rx/rx-lite.d.ts",
+        "./typings/rx/rx.d.ts",
+        "./typings/tsd.d.ts"
     ]
 }
