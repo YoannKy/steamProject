@@ -1,14 +1,23 @@
 /// <reference path="../typings/tsd.d.ts" />
 import {Component, View, bootstrap} from 'angular2/angular2';
+import {RouteConfig, RouterOutlet, RouterLink, routerInjectables} from 'angular2/router';
+
+import {Home} from 'components/home/home';
+import {About} from 'components/about/about';
 
 @Component({
   selector: 'app'
 })
+@RouteConfig([
+  { path: '/', component: Home, as: 'home' },
+  { path: '/about', component: About, as: 'about' }
+])
 @View({
-  template: '<h1>Welcome !</h1>'
+  templateUrl: 'app.html',
+  directives: [RouterOutlet, RouterLink]
 })
 class App {
 
 }
 
-bootstrap(App);
+bootstrap(App, [routerInjectables]);
