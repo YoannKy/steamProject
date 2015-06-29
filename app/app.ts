@@ -1,24 +1,25 @@
 /// <reference path="../typings/tsd.d.ts" />
 import {Component, View, bootstrap, NgFor} from 'angular2/angular2';
+import {RouteConfig, RouterOutlet, RouterLink, routerInjectables} from 'angular2/router';
 import {SteamService} from 'services/steamService';
+
+import {Comparison} from 'components/comparison/comparison';
+import {List} from 'components/list/list';
+import {Features} from 'components/features/features';
 
 @Component({
   selector: 'app',
   appInjector: [SteamService]
 })
 
+@RouteConfig([
+  { path: '/comparison', component: Comparison, as: 'comparison' },
+  { path: '/list', component: List, as: 'list' },
+  { path: '/features', component: Features, as: 'features' }
+])
 @View({
-  template: `<div class="col-lg-12 well">
-              <input  class="form-control"  #name (keyup)="search(name.value)" type="text" placeholder="search a game..." />
-              <img [class.visible]="showWait" src="img/loading.gif" alt="Smiley face" height="100%" width="100%">
-              <div [class.visible]="isEmpty(results)" class="col-lg-12">
-                <ul [class.visible]="!showWait" class="list-group game-list">
-                  <li class="list-group-item game-item"  (click)="details(result.appid)" *ng-for="#result of results">{{result.name}}</li>
-                </ul>
-                <button [class.visible]="!showWait" class="btn btn-primary" (click)="loadMore()">Load more</button>
-              </div>
-            </div>`,
-  directives: [NgFor]
+  templateUrl: 'app.html',
+  directives: [NgFor, RouterOutlet, RouterLink]
 })
 
 class App {
@@ -66,4 +67,4 @@ class App {
     return(anArray.length == 0)
   };
 }
-bootstrap(App);
+bootstrap(App, [routerInjectables]);

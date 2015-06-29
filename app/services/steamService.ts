@@ -44,5 +44,4 @@ export class SteamService {
     };
     return this.games;
   }
-
 }
