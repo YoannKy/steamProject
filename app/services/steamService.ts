@@ -5,7 +5,7 @@ export class SteamService {
   results: Array<Object> = []; 
   indice : number;
   renember : Array<Object> = [];
-  forbidden : RegExp = /beta|dlc|trailer|movie|teaser|demo|dedicated|test|sdk/i;
+  forbidden : RegExp = /beta|dlc|trailer|movie|teaser|demo|dedicated|test|sdk|character|steam|pack|costume|soundtrack/i;
 
 
   constructor() {
@@ -44,4 +44,17 @@ export class SteamService {
     };
     return this.games;
   }
+
+  details(appid: number) {
+    return new Promise((resolve, reject) => {
+      fetch('http://127.0.0.1://projets/steam/app.php?appID='+appid)
+      .then(response => response.json())
+      .then(response => {
+        resolve(response); // resolve promise with response if it fetch succeded
+        }).catch(() => {
+        reject(); // reject promise if we catch a fetch error
+      });
+    });    
+  }
+
 }

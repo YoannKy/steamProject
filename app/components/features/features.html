@@ -1,3 +1,16 @@
 <div class="wrapper">
-  <h1>Features of a game</h1>
+  <h1>Search your game !</h1>
+  <div class="col-lg-12 well">
+      <input  class="form-control"  #name (keyup)="search(name.value)" type="text" placeholder="search a game..." />
+      <div clas="col-lg-12">
+      <img [class.visible]="showWait" src="img/loading.gif" alt="Smiley face" >
+      <div [class.visible]="isEmpty(results)" class="col-lg-12">
+      <ul [class.visible]="!showWait" class="list-group game-list">
+        <li class="list-group-item game-item"  (click)="details(result.appid)" *ng-for="#result of results">
+        	<a router-link="details">{{result.name}}</a></li>
+      </ul>
+      <button [class.visible]="!showWait" class="btn btn-primary" (click)="loadMore()">Load more</button>
+    </div>
+    </div>
+  </div>
 </div>
