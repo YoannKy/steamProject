@@ -10,8 +10,6 @@ import {Details} from 'components/details/details';
 })
 
 @RouteConfig([
-  { path: '/comparison', component: Comparison, as: 'comparison' },
-  { path: '/list', component: List, as: 'list' },
   { path: '/features', component: Features, as: 'features' },
   { path: '/details', component: Details, as : 'details'}
 ])

@@ -16,10 +16,9 @@ export class Details {
 	appid : number = 57690;
 
 	constructor(aSteamService: SteamService) {
-	    this.steamService = aSteamService;
-	    this.steamService.details(this.appid).then(response => {
-        this.results = response;
-console.debug(this.results); 
-	     
-
+    this.steamService = aSteamService;
+    this.steamService.details(this.appid).then(response => {
+    this.results = response;
+    console.debug(this.results);
+  }
 }
