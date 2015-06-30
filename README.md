@@ -14,6 +14,8 @@ npm install -g gulp # If you don't have gulp already installed
 gulp serve
 ```
 
+**It works better with Google Chrome or Chromium!**
+
 # License
 
 MIT
