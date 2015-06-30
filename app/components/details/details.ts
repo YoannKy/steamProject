@@ -2,7 +2,7 @@ import {Component, View} from 'angular2/angular2';
 import {SteamService} from 'services/steamService'
 
 @Component({
-  selector: 'details',
+  selector: 'spec',
   appInjector: [SteamService]
 })
 @View({
