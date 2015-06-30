@@ -45,9 +45,12 @@ import {SteamService} from 'services/steamService';
                   <li (click)="details(result.appid)" *ng-for="#result of results">{{result.name}}</li>
                 </ul>
               <button (click)="loadMore()">Load more</button>
-              <p  *ng-for="#result3 of results3">{{result3.appid}}{{result3.name}}{{result3.players_forever}}</p>
-              <p  *ng-for="#result4 of results4">{{result4.appid}}{{result4.name}}{{result4.players_forever}}</p>`,
-              //<p  *ng-for="#result2 of results2">{{result2[730].data.name}}</p>`,
+              <div  *ng-for="#result2 of results2">
+                  <h2>{{result2[730].data.name}}</h2>
+                  <p>{{result2[730].data.detailed_description}}</p>
+                  <img src={{result2[730].data.header_image}}</img>
+              </div>`,
+
   directives: [NgFor]
 })
 class App {
@@ -77,6 +80,7 @@ class App {
     steamService.loadCs("tro.json").then(response => {
       this.results4 = response; // This first function is called if promise is fullfilled
       this.id2 = parseInt(response[0].owners);
+      console.log("ETAPE2");
     }, response => {
       console.warn("Games loading failed"); // This second function is called if promise is rejected
     });
